@@ -1,0 +1,53 @@
+--Create a clothing store database
+
+CREATE TABLE clothing_store (
+clothing_id INTEGER PRIMARY KEY,
+name TEXT,
+color TEXT,
+price INTEGER,
+stock INTEGER
+);
+
+INSERT INTO clothing_store
+VALUES(1, 't-shirt', 'white', 15.99, 20 );
+INSERT INTO clothing_store 
+VALUES(2, 'wide-leg jeans', 'blue', 42.99, 10);
+INSERT INTO clothing_store 
+VALUES(3, 'trousers', 'black', 45.99, 10);
+INSERT INTO clothing_store 
+VALUES(4, 'long-sleeve t-shirt', 'grey', 16.99, 20);
+INSERT INTO clothing_store 
+VALUES(5, 'mini skirt', 'black', 31.99, 15);
+INSERT INTO clothing_store 
+VALUES(6, 'midi dress', 'red', 38.99, 10);
+INSERT INTO clothing_store 
+VALUES(7, 'cropped jacket', 'army green', 52.99, 8);
+INSERT INTO clothing_store 
+VALUES(9, 'knee-high boots', 'brown', 79.99, 10);
+INSERT INTO clothing_store 
+VALUES(10, 'chuck 70s', 'black', 85.99, 15);
+INSERT INTO clothing_store 
+VALUES(11, 'sheer tights', 'black', 10.99, 20);
+INSERT INTO clothing_store 
+VALUES(12, 'top-handle bag', 'cream', 76.99, 15);
+INSERT INTO clothing_store 
+VALUES(13, 'blazer', 'brown', 50.99, 20);
+INSERT INTO clothing_store 
+VALUES(14, 'chain necklace', 'gold', 99.99, 5);
+INSERT INTO clothing_store 
+VALUES(15, 'suit vest', 'pinstripe', 32.99, 10);
+
+SELECT * FROM clothing_store;
+
+--display the database ordered by price where the stock is greater than or equal to 15, displaying only 5 items.
+
+SELECT * FROM clothing_store WHERE stock >= 15 ORDER BY price asc LIMIT 5;
+
+--display the database ordered by price where the item's color is black.
+
+SELECT * FROM clothing_store WHERE color ='black' ORDER  BY price asc;
+
+--what is the average price of items rounded to 2 decimal places?
+
+SELECT ROUND(AVG(price), 2)
+FROM clothing_store;
