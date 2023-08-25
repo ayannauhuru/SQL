@@ -1,0 +1,244 @@
+/*Creating tables bands, albums, my_fav_songs, and band_origin
+and entering values into the tables*/
+
+CREATE TABLE bands (
+id INTEGER PRIMARY KEY,
+name TEXT,
+genre TEXT,
+grammy_noms INTEGER);
+
+INSERT INTO bands (name, genre, grammy_noms)
+VALUES ("Queen", "Rock", 4);
+INSERT INTO bands (name, genre, grammy_noms)
+VALUES ("Fleet Foxes", "Folk", 2);
+INSERT INTO bands (name, genre, grammy_noms)
+VALUES ("Spandau Ballet", "Pop", NULL);
+INSERT INTO bands (name, genre, grammy_noms)
+VALUES ("Vampire Weekend", "Alternative", 4);
+INSERT INTO bands (name, genre, grammy_noms)
+VALUES ("Bonjah", "Alternative Rock", NULL);
+INSERT INTO bands (name, genre, grammy_noms)
+VALUES ("Tears for Fears", "Pop Rock", 1);
+INSERT INTO bands (name, genre, grammy_noms)
+VALUES ("Daryl Hall & John Oates", "Yacht Rock", 5);
+INSERT INTO bands (name, genre, grammy_noms)
+VALUES ("Grizzly Bear", "Alternative", NULL);
+
+SELECT * FROM bands;
+
+/*id, title, release_year, band_id*/
+CREATE TABLE albums (
+id INTEGER PRIMARY KEY,
+title TEXT,
+release_year INTEGER,
+band_id INTEGER);
+
+INSERT INTO albums (title, release_year, band_id)
+VALUES ("The Works", 1984, 1);
+INSERT INTO albums (title, release_year, band_id)
+VALUES ("Fleet Foxes", 2008, 2);
+INSERT INTO albums (title, release_year, band_id)
+VALUES("Sun Giant", 2008, 2);
+INSERT INTO albums(title, release_year, band_id)
+VALUES("Helplessness Blues", 2011 , 2);
+INSERT INTO albums(title, release_year, band_id)
+VALUES ("True", 1983, 3);
+INSERT INTO albums (title, release_year, band_id)
+VALUES ("Contra", 2010, 4);
+INSERT INTO albums (title, release_year, band_id)
+VALUES ("Father of the Bride", 2019, 4);
+INSERT INTO albums (title, release_year, band_id)
+VALUES ("Go Go Chaos", 2011, 5);
+INSERT INTO albums(title, release_year, band_id)
+VALUES ("The Hurting", 1983, 6);
+INSERT INTO albums (title, release_year, band_id)
+VALUES ("Songs From The Big Chair", 1985, "6");
+INSERT INTO albums (title, release_year, band_id)
+VALUES ("Private Eyes", 1981, 7);
+INSERT INTO albums (title, release_year, band_id)
+VALUES ("Veckatimest", "2009", "8");
+
+-- Altering 'albums' table to add the length_s column
+ALTER TABLE albums
+ADD length_s INTEGER;
+
+-- Updating each album with length in seconds
+
+UPDATE albums SET length_s = 2235 WHERE albums.id = 1;
+UPDATE albums SET length_s = 2355 WHERE albums.id = 2;
+UPDATE albums SET length_s = 1130 WHERE albums.id = 3;
+UPDATE albums SET length_s = 2996 WHERE albums.id = 4;
+UPDATE albums SET length_s = 2136 WHERE albums.id = 5;
+UPDATE albums SET length_s = 2200 WHERE albums.id = 6;
+UPDATE albums SET length_s = 3470 WHERE albums.id = 7;
+UPDATE albums SET length_s = 2451 WHERE albums.id = 8;
+UPDATE albums SET length_s = 2499 WHERE albums.id = 9;
+UPDATE albums SET length_s = 2512 WHERE albums.id = 10;
+UPDATE albums SET length_s = 2867 WHERE albums.id = 11;
+UPDATE albums SET length_s = 3122 WHERE albums.id = 12;
+
+SELECT * FROM albums;
+
+/*id, title, length_s, album_id, band_id*/
+CREATE TABLE my_fav_songs (
+id INTEGER PRIMARY KEY,
+title TEXT,
+length_s INTEGER,
+album_id INTEGER,
+band_id INTEGER);
+
+INSERT INTO my_fav_songs (title, length_s, album_id, band_id)
+VALUES ("Radio Ga Ga", 348, 1, 1);
+INSERT INTO my_fav_songs (title, length_s, album_id, band_id)
+VALUES ("Blue Ridge Mountains", 265, 2, 2);
+INSERT INTO my_fav_songs(title, length_s, album_id, band_id)
+VALUES ("Mykonos", 275, 3, 2);
+INSERT INTO my_fav_songs(title, length_s, album_id, band_id)
+VALUES ("The Shrine / An Argument", 487, 4, 2);
+INSERT INTO my_fav_songs (title, length_s, album_id, band_id)
+VALUES ("Gold", 290, 5, 3);
+INSERT INTO my_fav_songs (title, length_s, album_id, band_id)
+VALUES ("Diplomat's Son", 361, 6, 4);
+INSERT INTO my_fav_songs (title, length_s, album_id, band_id)
+VALUES ("Sympathy", 227, 7, 4);
+INSERT INTO my_fav_songs (title, length_s, album_id, band_id)
+VALUES ("Go Go Chaos", 243, 8, 5);
+INSERT INTO my_fav_songs (title, length_s, album_id, band_id)
+VALUES ("The Hurting", 256, 9, 6);
+INSERT INTO my_fav_songs (title, length_s, album_id, band_id)
+VALUES ("Head Over Heels / Broken", 302, 10, 6);
+INSERT INTO my_fav_songs (title, length_s, album_id, band_id)
+VALUES ("The Way You Are", 295, 10, 6);
+INSERT INTO my_fav_songs (title, length_s, album_id, band_id)
+VALUES ("The Working Hour", 391, 10, 6);
+INSERT INTO my_fav_songs (title, length_s, album_id, band_id)
+VALUES ("Mothers Talk", 306, 10, 6);
+INSERT INTO my_fav_songs (title, length_s, album_id, band_id)
+VALUES ("I Can't Go For That (No Can Do)", 307, 11, 7);
+INSERT INTO my_fav_songs (title, length_s, album_id, band_id)
+VALUES ("Ready, Able", 257, 12, 8);
+INSERT INTO my_fav_songs (title, length_s, album_id, band_id)
+VALUES ("Southern Point", 302, 12, 8);
+
+SELECT * FROM my_fav_songs;
+
+/*id, city, country, year, band_id*/
+CREATE TABLE band_origin (
+id INTEGER PRIMARY KEY,
+city TEXT,
+country TEXT,
+year INTEGER,
+band_id INTEGER);
+
+INSERT INTO band_origin (city, country, year, band_id)
+VALUES ("London", "England", "1970", "1");
+INSERT INTO band_origin (city, country, year, band_id)
+VALUES ("Seattle", "USA", "2006", "2");
+INSERT INTO band_origin (city, country, year, band_id)
+VALUES ("Islington", "England", "1979", "3");
+INSERT INTO band_origin (city, country, year, band_id)
+VALUES ("New York City", "USA", "2006", "4");
+INSERT INTO band_origin (city, country, year, band_id)
+VALUES ("Tauranga", "New Zealand", "2006", "5");
+INSERT INTO band_origin (city, country, year, band_id)
+VALUES ("Bath", "England", "1981", "6");
+INSERT INTO band_origin (city, country, year, band_id)
+VALUES ("Philadelphia", "USA", "1970", "7");
+INSERT INTO band_origin (city, country, year, band_id)
+VALUES ("Brooklyn", "USA", "2002", "8");
+
+SELECT * FROM band_origin;
+
+----
+SELECT * FROM bands;
+SELECT * FROM albums;
+SELECT * FROM my_fav_songs;
+SELECT * FROM band_origin;
+
+----
+-- QUERIES STARTING BELOW
+
+/*JOINing related tables*/
+
+-- List all songs and which bands made them.
+
+SELECT mfs.title AS song, bands.name AS band
+FROM my_fav_songs mfs
+JOIN bands
+ON mfs.band_id = bands.id;
+
+SELECT my_fav_songs.title
+FROM my_fav_songs
+JOIN bands
+ON my_fav_songs.band_id = bands.id
+WHERE bands.name = 'Tears For Fears';
+
+-- List all bands formed in England and the year they debuted.
+
+SELECT bands.name,
+origin.city || ', ' || origin.country AS 'from',
+origin.year AS debuted
+FROM bands
+JOIN band_origin origin
+ON bands.id = origin.band_id
+WHERE origin.country = "England";
+
+-- Which bands from the USA were nominated for Grammys and how many times
+-- were they nominated?
+
+SELECT bands.name,
+origin.country AS 'from', 
+grammy_noms 
+FROM bands
+JOIN band_origin origin
+ON bands.id = origin.band_id
+WHERE origin.country = "USA"
+AND grammy_noms IS NOT NULL;
+
+-- Which bands have more than 1 song in the data set and how many do they have?
+-- Order the results by most to least songs, then alphabetically.
+
+SELECT bands.name
+, COUNT(mfs.title) AS song_count
+FROM bands
+JOIN my_fav_songs mfs
+ON bands.id = mfs.band_id
+GROUP BY bands.name
+HAVING song_count > 1
+ORDER BY song_count desc, name asc;
+
+-- Of the bands that make Rock music, where are they from, and what are the names
+-- and lengths of their songs?
+
+SELECT bands.name,
+origin.city || ', ' || origin.country AS 'from',
+mfs.title,
+mfs.length_s AS length_in_seconds
+--(mfs.length_s || ' seconds') AS 'length' 
+FROM bands
+INNER JOIN band_origin AS origin
+ON bands.id = origin.band_id
+INNER JOIN my_fav_songs mfs
+ON origin.band_id = mfs.band_id
+WHERE genre LIKE '%Rock%';
+
+--List each band's longest song.
+SELECT bands.name AS band,
+mfs.title AS longest_song,
+MAX(length_s) AS duration_s
+FROM my_fav_songs mfs
+JOIN bands
+ON mfs.band_id = bands.id
+GROUP BY bands.name
+ORDER BY duration_s desc;
+
+-- List the bands, the length of each of their songs, and how long they are on average?
+-- Window Function
+
+SELECT bands.name AS 'band',
+title AS 'song_title',
+length_s,
+AVG(length_s) OVER (PARTITION BY mfs.band_id) AS 'avg_song_length'
+FROM bands
+JOIN my_fav_songs mfs
+ON bands.id = mfs.band_id;
