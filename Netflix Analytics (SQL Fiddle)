@@ -1,3 +1,7 @@
+-- Queries performed using the PostgreSQL dialect on Netflix data from SQL Fiddle. 
+
+http://sqlfiddle.com/#!17/7dae0/16/0"
+
 CREATE TABLE netflix_titles_info
     ("show_id" varchar(5), "type" varchar(7), "title" varchar(58), "country" varchar(74), "date_added" timestamp, "release_year" int, "rating" varchar(5), "duration" varchar(9), "listed_in" varchar(74))
 ;
@@ -55,4 +59,49 @@ VALUES
     ('s19', 'Adam Salky', 'Freida Pinto| Logan Marshall-Green| Robert John Burke| Megan Elisabeth Kelly| Sarah Minnich| Hayes Hargrove| Mark Sivertsen| Brandon Fierro| Antonio Valles| Clint Obenchain'),
     ('s20', NULL, 'Blanca SuÃ¡rez| IvÃ¡n Marcos| Ã“scar Casas| AdriÃ¡n Lastra| Francesc Garrido| Stefan Weinert| Julia MÃ¶ller| Alicia Chojnowski')
     ;
+
+-- 	1.	How many movie titles are there in the database? (movies only, not tv shows)
+
+SELECT count(*)
+FROM "netflix_titles_info"
+WHERE type = 'Movie’;
+
+--	2.	When was the most recent batch of tv shows and/or movies added to the database?
+
+SELECT max(date(date_added))
+FROM "netflix_titles_info";
+
+--	3.	List all the movies and tv shows in alphabetical order.
+
+SELECT title
+FROM "netflix_titles_info"
+ORDER BY title ASC;
+
+--	4.	Who was the Director for the movie The Starling?
+
+SELECT director
+FROM "netflix_titles_info” titles
+LEFT JOIN "netflix_people” people
+ON titles.show_id = people.show_id
+WHERE titles.title = 'The Starling’;
+
+--	5.	What is the oldest movie in the database and what year was it made?
+
+SELECT title
+, release_year
+FROM "netflix_titles_info"
+WHERE type = 'Movie'
+ORDER BY release_year asc
+LIMIT 1;
+
+OR 
+
+SELECT title
+, release_year
+FROM “netflix_titles_info”
+WHERE type = ‘Movie’
+AND release_year <=
+(SELECT MIN (release year)
+FROM “netflix_titles_info”
+WHERE type = ‘’Movie”;)
 
