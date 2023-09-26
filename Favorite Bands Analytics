@@ -160,7 +160,7 @@ SELECT * FROM band_origin;
 
 /*JOINing related tables*/
 
--- List all songs and which bands made them.
+-- 1. List all songs and which bands made them.
 
 SELECT mfs.title AS song, bands.name AS band
 FROM my_fav_songs mfs
@@ -173,7 +173,7 @@ JOIN bands
 ON my_fav_songs.band_id = bands.id
 WHERE bands.name = 'Tears For Fears';
 
--- List all bands formed in England and the year they debuted.
+-- 2. List all bands formed in England and the year they debuted.
 
 SELECT bands.name,
 origin.city || ', ' || origin.country AS 'from',
@@ -183,7 +183,7 @@ JOIN band_origin origin
 ON bands.id = origin.band_id
 WHERE origin.country = "England";
 
--- Which bands from the USA were nominated for Grammys and how many times
+-- 3. Which bands from the USA were nominated for Grammys and how many times
 -- were they nominated?
 
 SELECT bands.name,
@@ -195,7 +195,7 @@ ON bands.id = origin.band_id
 WHERE origin.country = "USA"
 AND grammy_noms IS NOT NULL;
 
--- Which bands have more than 1 song in the data set and how many do they have?
+-- 4. Which bands have more than 1 song in the data set and how many do they have?
 -- Order the results by most to least songs, then alphabetically.
 
 SELECT bands.name
@@ -207,7 +207,7 @@ GROUP BY bands.name
 HAVING song_count > 1
 ORDER BY song_count desc, name asc;
 
--- Of the bands that make Rock music, where are they from, and what are the names
+-- 5. Of the bands that make Rock music, where are they from, and what are the names
 -- and lengths of their songs?
 
 SELECT bands.name,
@@ -222,7 +222,7 @@ INNER JOIN my_fav_songs mfs
 ON origin.band_id = mfs.band_id
 WHERE genre LIKE '%Rock%';
 
---List each band's longest song.
+-- 6. List each band's longest song.
 SELECT bands.name AS band,
 mfs.title AS longest_song,
 MAX(length_s) AS duration_s
@@ -232,7 +232,7 @@ ON mfs.band_id = bands.id
 GROUP BY bands.name
 ORDER BY duration_s desc;
 
--- List the bands, the length of each of their songs, and how long they are on average?
+-- 7. List the bands, the length of each of their songs, and how long they are on average?
 -- Window Function
 
 SELECT bands.name AS 'band',
