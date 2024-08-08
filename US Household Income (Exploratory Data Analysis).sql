@@ -1,4 +1,6 @@
 # US Household Income (Exploratory Data Analysis) ------
+
+   # Completed as Part of the AnalystBuilder MySQL for Data Analytics Course
    
    # Looking at the area of the land and Water, joining the household income tables,
    # finding some 'dirty data' with 0s in the `Mean` column,
