@@ -1,5 +1,7 @@
 # US Household Income (Data Cleaning) ------
 
+	# Completed as Part of the AnalystBuilder MySQL for Data Analytics Course
+
 	# Finding and deleting duplicate data, looking for mispellings, and looking for and populating NULL/blank data (if needed)
     
 SELECT * 
