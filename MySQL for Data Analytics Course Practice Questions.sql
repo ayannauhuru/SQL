@@ -1,6 +1,7 @@
 # MySQL for Data Analytics Course
 
 # PRACTICE QUESTIONS
+	# Practice with: querying basics, different data types and functions, group by, joins, subqueries, window functions, and data cleaning.
 
 # Querying Basics ------
 
