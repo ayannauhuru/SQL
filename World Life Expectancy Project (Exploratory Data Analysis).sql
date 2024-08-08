@@ -1,5 +1,7 @@
 # World Life Expectancy Project (Exploratory Data Analysis) ------
 
+  # Completed as Part of the AnalystBuilder MySQL for Data Analytics Course
+  
 SELECT *
 FROM world_life_expectancy
 ;
